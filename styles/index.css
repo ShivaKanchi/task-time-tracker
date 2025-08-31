@@ -1,0 +1,410 @@
+:root,
+:root.light {
+  --color-border: #888;
+  --text-color: #333;
+  --cta-color: #3f51b5;
+  --bg-color: #f3f3f3;
+}
+
+:root.dark {
+  --color-border: #888;
+  --text-color: #fff;
+  --cta-color: #3f51b5;
+  --bg-color: #333;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-border: #888;
+    --text-color: #fff;
+    --cta-color: #3f51b5;
+    --bg-color: #333;
+  }
+}
+body {
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: -0.3pc;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  color-scheme: dark;
+}
+button {
+  outline: none;
+  background-color: unset;
+  border: unset;
+  font: inherit;
+  color: var(--text-color);
+}
+.container {
+  height: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.container.--hide {
+  filter: blur(2px);
+}
+
+.task__heading {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  background-color: var(--bg-color);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100px;
+  transition: top 0.3s ease-in;
+}
+.task__heading:not(.bottom-nav).--hide {
+  top: -50px;
+}
+
+.task__heading.bottom-nav {
+  top: unset;
+  bottom: -1%;
+  border-top: 1px solid var(--color-border);
+}
+
+.task__heading.bottom-nav ~ .task__wrapper {
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+
+.task__todaysDate {
+  margin-bottom: auto;
+  margin-top: 10px;
+  letter-spacing: -0.3pc;
+  color: var(--text-color);
+}
+
+.task__tabsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 50px;
+  border-top: 1px solid var(--color-border);
+  padding: 0 20px;
+  gap: 20px;
+}
+.task__addtaskWrapper {
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.task__tabsList {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: stretch;
+  align-items: stretch;
+  /* gap: 2px; */
+  letter-spacing: normal;
+  height: 100%;
+  width: 100%;
+}
+
+.task__tab {
+  opacity: 0.6;
+  padding: 4px;
+  position: relative;
+  padding-top: 20px;
+  width: 50%;
+  cursor: pointer;
+  border-left: 1px solid var(--color-border);
+}
+.task__tab:first-child {
+  border-right: 1px solid var(--color-border);
+}
+.task__tab.--users-task {
+  color: #000;
+}
+.task__tab.active {
+  opacity: 1;
+  background-color: var(--bg-color);
+  color: var(--color-border);
+  /* border-top: 1px solid var(--color-border); */
+  margin-top: 0.1px;
+}
+.task__tab.active::after {
+  content: "";
+  width: 100%;
+  height: 1.7px;
+  bottom: -1.2px;
+  left: 0;
+  background-color: var(--bg-color);
+  position: absolute;
+}
+
+.task__tab[data-color="red"] {
+  color: red;
+}
+.task__tab[data-color="orange"] {
+  color: orange;
+}
+.task__tab[data-color="yellow"] {
+  color: yellow;
+}
+.task__tab[data-color="blue"] {
+  color: blue;
+}
+.task__tab[data-color="pink"] {
+  color: pink;
+}
+.task__tab[data-color="purple"] {
+  color: purple;
+}
+.task__tab[data-color="green"] {
+  color: green;
+}
+.task__tab[data-color="azure"] {
+  color: azure;
+}
+.task__addtask,
+#submitLabel {
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 20%;
+  opacity: 0.5;
+}
+.task__wrapper {
+  padding: 0 5%;
+  margin-bottom: 10%;
+  margin-top: 100px;
+}
+.task__daylist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.task__occupied {
+  position: absolute;
+  width: calc(90%);
+  height: 1px;
+  top: 100px;
+  opacity: 0.69;
+}
+
+.task__occupied:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: calc(100% - 51px);
+  height: 100%;
+  opacity: 0.5;
+}
+.task__occupied[data-color="red"]:after {
+  background-color: red;
+}
+.task__occupied[data-color="orange"]:after {
+  background-color: orange;
+}
+.task__occupied[data-color="yellow"]:after {
+  background-color: yellow;
+}
+.task__occupied[data-color="blue"]:after {
+  background-color: blue;
+}
+.task__occupied[data-color="pink"]:after {
+  background-color: pink;
+}
+.task__occupied[data-color="purple"]:after {
+  background-color: purple;
+}
+.task__occupied[data-color="green"]:after {
+  background-color: green;
+}
+.task__occupied[data-color="azure"]:after {
+  background-color: darkslategrey;
+}
+
+.task__hour {
+  width: 90%;
+  height: 15vh;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.task__hour span {
+  height: 100%;
+  width: 50px;
+  letter-spacing: -1px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  border-right: 1px solid var(--color-border);
+  padding-top: 15px;
+}
+.task__hourtaskList {
+  width: calc(100% - 50px);
+  height: 100%;
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  /* -webkit-tap-highlight-color: transparent; */
+  /* cursor: pointer; */
+}
+/* .task__hourtaskList:hover {
+  border: 2px solid var(--cta-color);
+} */
+
+.time__editCursor,
+.time__nowCursor {
+  align-self: flex-start;
+  height: 2px;
+  position: absolute;
+  top: 0%;
+  width: calc(100% - 50px);
+  right: 0;
+  z-index: 4;
+}
+
+.time__editCursor:before,
+.time__nowCursor:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: inherit;
+  position: absolute;
+  left: -10px;
+  top: -450%;
+  z-index: 1;
+}
+
+.time__nowCursor {
+  background: var(--text-color);
+}
+
+.time__editCursor {
+  background: var(--cta-color);
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  padding-top: 15%;
+  letter-spacing: -0.5px;
+  background: rgb(255, 255, 255, 0.1);
+  display: none;
+}
+.modal.--show {
+  display: flex;
+}
+.modal__wrapper {
+  height: 20%;
+  background: var(--bg-color);
+  border: 3px solid var(--color-border);
+  border-radius: 10px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal__Heading {
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid var(--color-border);
+}
+.modal__form {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.modal__form > label:not([for="submitLabel"]) {
+  width: 100%;
+}
+.modal__form > label[for="submitLabel"] {
+  align-self: flex-end;
+}
+.modal__form #submitLabel {
+  cursor: pointer;
+}
+.modal__formColorInput > select {
+  cursor: pointer;
+}
+.modal__formColorInput > select > option[value="red"] {
+  color: red;
+}
+.modal__formColorInput > select > option[value="orange"] {
+  color: orange;
+}
+.modal__formColorInput > select > option[value="yellow"] {
+  color: yellow;
+}
+.modal__formColorInput > select > option[value="blue"] {
+  color: blue;
+}
+.modal__formColorInput > select > option[value="pink"] {
+  color: pink;
+}
+.modal__formColorInput > select > option[value="purple"] {
+  color: purple;
+}
+.modal__formColorInput > select > option[value="green"] {
+  color: green;
+}
+.modal__formColorInput > select > option[value="azure"] {
+  color: azure;
+}
+
+.tasks__efforts {
+  padding: 8% 4%;
+}
+
+.tasks__efforts p {
+  letter-spacing: normal;
+  margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .task__tabsWrapper {
+    width: 90%;
+  }
+  .task__tabsList {
+    margin-top: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  .task__tab {
+    padding-top: 20px;
+    /* border-top: 1px solid var(--color-border); */
+    border-top: unset;
+  }
+  .task__tab.active {
+    background-color: var(--color-border);
+    color: #333;
+  }
+  .task__tab.active::after {
+    display: none;
+  }
+}

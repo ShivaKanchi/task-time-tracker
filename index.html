@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Time Tracker</title>
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="task__heading">
+          <h1 class="task__todaysDate"></h1>
+          <div class="task__tabsWrapper">
+            <div class="task__tabsList">
+              <button
+                class="task__tab --users-task"
+                data-task="break"
+                data-task-id="-1"
+              >
+                Break
+              </button>
+            </div>
+            <div class="task__addtaskWrapper">
+              <button class="task__addtask">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="task__wrapper">
+          <div class="task__daylist" id="taskList"></div>
+          <div class="tasks__efforts"></div>
+        </div>
+      </div>
+      <div class="modal">
+        <div class="modal__wrapper">
+          <span class="modal__Heading">Add New Task</span>
+          <form action="#" class="modal__form" id="addNewTask">
+            <label class="modal__formTextInput" for="taskName">
+              Name
+              <input type="text" id="taskName" value="taskName" />
+            </label>
+            <label class="modal__formColorInput" for="taskColor">
+              Color
+              <select type="text" id="taskColor" value="taskColor">
+                <option value="red" selected>Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="blue">Blue</option>
+                <option value="pink">Pink</option>
+                <option value="purple">Purple</option>
+                <option value="green">Green</option>
+                <option value="azure">Azure</option>
+              </select>
+            </label>
+            <label for="submitLabel">
+              <button id="submitLabel" type="submit">Add</button>
+            </label>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
