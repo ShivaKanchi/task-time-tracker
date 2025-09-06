@@ -9,7 +9,6 @@ A simple, free online tool to track time spent on daily tasks and improve produc
 - **Freelancers** - Track billable hours for client projects
 - **Remote Workers** - Monitor daily productivity and work patterns
 - **Students** - Time study sessions and assignments
-- **Project Managers** - Analyze team time allocation
 - **Personal Productivity** - Track habits and daily activities
 
 ## Features
